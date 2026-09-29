@@ -1,3 +1,4 @@
+#FIX: Refactored logic into logic_utils.py using AI
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
     if difficulty == "Easy":
@@ -8,7 +9,7 @@ def get_range_for_difficulty(difficulty: str):
         return 1, 50
     return 1, 100
 
-
+#FIX: Refactored logic into logic_utils.py using AI
 def parse_guess(raw: str):
     """
     Parse user input into an int guess.
@@ -38,7 +39,8 @@ HINT_MESSAGES = {
     "Too Low": "📈 Go HIGHER!",
 }
 
-
+#Fix: Correct high low hint using AI
+#FIX: Refactored logic into logic_utils.py using AI
 def check_guess(guess, secret):
     """
     Compare guess to secret and return the outcome.
@@ -61,7 +63,7 @@ def get_hint_message(outcome: str):
     """Return the player-facing hint text for an outcome from check_guess."""
     return HINT_MESSAGES.get(outcome, "")
 
-
+#FIX: Refactored logic into logic_utils.py using AI
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":

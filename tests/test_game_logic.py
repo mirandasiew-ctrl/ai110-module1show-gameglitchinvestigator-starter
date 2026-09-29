@@ -13,7 +13,7 @@ def test_guess_too_low():
     # If secret is 50 and guess is 40, hint should be "Too Low"
     result = check_guess(40, 50)
     assert result == "Too Low"
-
+#FIX: Added tests for low highhint messages using AI
 def test_too_high_hint_says_go_lower():
     # A guess above the secret must point the player DOWN, not up
     message = get_hint_message("Too High")

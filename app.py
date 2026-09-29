@@ -1,6 +1,6 @@
 import random
 import streamlit as st
-
+#FIX: Refactored logic into logic_utils.py using AI
 from logic_utils import (
     check_guess,
     get_hint_message,
@@ -62,10 +62,10 @@ with st.expander("Developer Debug Info", key="debug_panel"):
 
 def render_status():
     status_panel.info(
-        f"Guess a number between {low} and {high}. "
+        f"Guess a number between {low} and {high}. " #Fix: show range according to difficulty using AI
         f"Attempts left: {attempt_limit - st.session_state.attempts}"
     )
-
+    #Fix: correct attempt count using AI
     with debug_panel.container():
         st.write("Secret:", st.session_state.secret)
         st.write("Attempts:", st.session_state.attempts)
@@ -85,10 +85,10 @@ with col2:
     new_game = st.button("New Game 🔁")
 with col3:
     show_hint = st.checkbox("Show hint", value=True)
-
+#FIX: Fix new game initialization using AI
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.secret = random.randint(low, high)
     st.session_state.score = 0
     st.session_state.status = "playing"
     st.session_state.history = []
