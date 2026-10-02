@@ -68,10 +68,10 @@ fix go lower go higher hint after submitting guess
 | | Model A | Model B |
 |-|---------|---------|
 | **Model name** |Claude |ChatGPT |
-| **Response summary** |This lower higher hint bug fix was basically the same as ChatGPT except two more line at the beginning of the check_guess function to make sure the values are integers before comparison. It also found another spot (new_game) that has a bug. Since it is not the hint, it won't fix until I ask it to. |This bug fix was basically the same as Claude. It also found another bug at new_game and suggested the code fix. But the additional bug unrelated to this prompt is more comprehensive in Claude's analysis.|
+| **Response summary** |Found 2 bugs producing wrong hints. Inverted message in app.py:32-48, reversed it. And, string coercion on even attempts in app.py:159-162. Every other guess converted the secret to a string before comparing. Removed it, and on check_guess, normalized both sides with int(). |Two problems, one is in check_guess(), and the other one is in the section that intentionally changing secret between an integer and a string before calling check_guess(). So reversion the hint message for guess > secret and guess < secret in check_guess() function. And on calling check_guess, directly pass in the secret session variable which is an int.|
 | **More Pythonic?** |The same |The same |
-| **Clearer explanation?** |Easy to understand |Easy to understand |
+| **Clearer explanation?** |Easy to understand |Easier to understand |
 
 **Which did you prefer and why?**  
 <!-- Your conclusion -->
-I prefer ChatGPT. It gives explanation in between line changes.  So I understand each change before I apply it to the code file.  Claude gives the explanation at the end after I accepted the changes and tests.  So I have to analyze the code myself to see if it makes sense and whether to accept or reject the fix.
+I prefer ChatGPT. It gives explanation in between changes, and more precise. So I understand each change before I apply it to the code file.  Claude gives the explanation at the end after I accepted the changes and tests. So I have to analyze the code myself to see if it makes sense and whether to accept or reject the fix, even though I can revert or modify the code again later.
